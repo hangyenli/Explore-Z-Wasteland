@@ -2,21 +2,21 @@
     header("Content-Type: text/html; charset=utf8");
 
     if(!isset($_POST['submit'])){
-        exit("错误执行");
-    }//判断是否有submit操作
+        exit("Error");
+    }//valid submit or not
 
-    $name=$_POST['name'];//post获取表单里的name
-    $password=$_POST['password'];//post获取表单里的password
+    $name=$_POST['name'];//get user name
+    $password=$_POST['password'];//get user password
 
     include("connect.php");
 
-    $q="insert into user(id,username,password) values (null,'$name','$password')";//向数据库插入表单传来的值的sql
-    $reslut=$con->query ($q );
+    $q="insert into user(id,username,password) values (null,'$name','$password')";//insert value into database
+    $reslut=$con->query($q);
 
     if (!$reslut){
-        die('Error: ' . mysql_error());//如果sql执行失败输出错误
+        die('Error: ' . mysql_error());//if fail to insert
     }else{
-        echo "注册成功";//成功输出注册成功
+        echo "You have signed up!";//succes
     }
 
     $con = null;

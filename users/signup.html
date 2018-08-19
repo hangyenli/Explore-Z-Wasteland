@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户注册页面</title>
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="../resource/index.css">
 </head>
 <body>
-<form action="signup.php" method="post">
-    <p>用户名:<input type="text" name="name"></p>
-    <p>密  码: <input type="text" name="password"></p>
-    <p><input type="submit" name="submit" value="注册"></p>
-</form>
+
+<div>
+    <ul class="topNav">
+        <li class="topNavLeft"><a href="../htdocs/index.html">Home</a></li>
+        <li class="topNavRight"><a href="../users/signup.html">Sign up</a></li>
+        <li class="topNavRight"><a href="../users/login.html">Log in</a></li>
+    </ul>
+</div>
+
+<div class="formFormat">
+    <form action="signup.php" method="post">
+        <p>Username: <input type="text" name="name"></p>
+        <p>Password: <input type="text" name="password"></p>
+        <p><input type="submit" name="submit" value="subimt"></p>
+    </form>
+</div>
+
 </body>
 </html>

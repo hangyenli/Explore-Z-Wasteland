@@ -1,9 +1,6 @@
 <?php
-    //Creates PDO connection to our database
-    $db_name="test";
-    $db_username="root";
-    $db_password="";
-    $con = new PDO('mysql:host=localhost;dbname='.$db_name, $db_username, $db_password);
+    //Create connection to our database
+    $con = new mysqli("127.0.0.1","root","","test");
     if(!$con){
         die("can't connect");
     }

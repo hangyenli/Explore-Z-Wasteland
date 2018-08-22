@@ -5,29 +5,32 @@ if (!isset($_POST['submit'])) {
     exit("Error");
 }//valid submit or not
 
+include("connect.php");
+include ("signUpHelper.php");
+
 $name = $_POST['name'];//get user name
 $password = $_POST['password'];//get user password
 
-include("connect.php");
-
-
-
-//no duplicate, then we insert user info to DB
-$q = "insert into user(id,username,password) values (null,'$name','$password')";//insert value into database
-$res = $con->prepare($q);
-$res->execute();
-
-if (!$res) {
-    die('Error: ' . error_log("fail to sign up"));//if fail to insert
-} else {
-    echo "You have signed up!";//succes
-    echo "<script language=\"javascript\" type=\"text/javascript\"> 
+//check duplication
+$is_dup=checkDup($name,$con);
+if($is_dup) {
+    $con=null;
+    echo "<script language=\"javascript\" type=\"text/javascript\">
     //set timeout go to welcome page
-    setTimeout(\"javascript:location.href='../htdocs/index.html'\", 3000); 
+    alert('Please pick another Username');
+    setTimeout(\"javascript:location.href='signup.html'\", 1);
     </script>";
-
 }
 
-$con = null;
+//check password validity
+
+
+//we insert user into to DB
+$q = "insert into user(id,username,password) values (null,'$name','$password')";//insert value into database
+$res = $con->query($q);
+
+
+//redirect to home page and keep login status
+echo "you have sign up successfully";
 
 ?>

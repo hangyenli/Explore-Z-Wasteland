@@ -5,4 +5,4 @@ A new doomsday survival style strategy game in prototyping stage
 * finish up log in function
 * after log in, main(game main) page
 
-*！@#￥%……&（!
+* start to work on the front end

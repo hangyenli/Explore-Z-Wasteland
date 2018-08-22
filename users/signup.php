@@ -16,7 +16,7 @@ if(strlen($_POST['password'])<8){
     alertAndJump('Please use a password longer than 7 characters','signup.html',1);
     return;
 }
-$passwordH = password_hash($_POST['password'], PASSWORD_DEFAULT);//get user password
+$passwordH =md5($_POST['password']);//get user password
 
 
 //check duplication
@@ -27,16 +27,9 @@ if($is_dup) {
     return;
 }
 
-
-
 //we insert user into to DB
 register($name,$passwordH,$con);
 
-
 //redirect to home page and keep login status
-echo "you have sign up successfully";
-echo "<script language=\"javascript\" type=\"text/javascript\">
-    //set timeout go to welcome page
-    setTimeout(\"javascript:location.href='../htdocs/index.html'\", 3000);
-    </script>";
+alertAndJump("you have sign up successfully","../htdocs/index.html",3000)
 ?>

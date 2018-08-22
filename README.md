@@ -6,6 +6,4 @@ A new doomsday survival style strategy game in prototyping stage
 * after log in, main(game main) page
 
 * start to work on the front end
-
-
-* test commit
+* jump to login in page after signing up

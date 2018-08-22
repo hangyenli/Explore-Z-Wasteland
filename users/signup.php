@@ -6,31 +6,37 @@ if (!isset($_POST['submit'])) {
 }//valid submit or not
 
 include("connect.php");
-include ("signUpHelper.php");
+include("../api/user/player/signUpHelper.php");
+include ("../api/view/alertAndPageJump.php");
 
 $name = $_POST['name'];//get user name
-$password = $_POST['password'];//get user password
+
+//check password validity
+if(strlen($_POST['password'])<8){
+    alertAndJump('Please use a password longer than 7 characters','signup.html',1);
+    return;
+}
+$passwordH = password_hash($_POST['password'], PASSWORD_DEFAULT);//get user password
+
 
 //check duplication
 $is_dup=checkDup($name,$con);
 if($is_dup) {
-    $con=null;
-    echo "<script language=\"javascript\" type=\"text/javascript\">
-    //set timeout go to welcome page
-    alert('Please pick another Username');
-    setTimeout(\"javascript:location.href='signup.html'\", 1);
-    </script>";
+    $con->close();
+    alertAndJump('Please pick another Username','signup.html',1);
+    return;
 }
 
-//check password validity
 
 
 //we insert user into to DB
-$q = "insert into user(id,username,password) values (null,'$name','$password')";//insert value into database
-$res = $con->query($q);
+register($name,$passwordH,$con);
 
 
 //redirect to home page and keep login status
 echo "you have sign up successfully";
-
+echo "<script language=\"javascript\" type=\"text/javascript\">
+    //set timeout go to welcome page
+    setTimeout(\"javascript:location.href='../htdocs/index.html'\", 3000);
+    </script>";
 ?>

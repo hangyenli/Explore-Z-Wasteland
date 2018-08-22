@@ -8,4 +8,4 @@ A new doomsday survival style strategy game in prototyping stage
 * after sign up, user welcome page
 * after log in, main(game main) page
 * test github
-
+* test Merge

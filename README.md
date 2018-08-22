@@ -8,4 +8,4 @@ A new doomsday survival style strategy game in prototyping stage
 * start to work on the front end
 
 
-* jfjfjf
+* test commit

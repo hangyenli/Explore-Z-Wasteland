@@ -2,8 +2,22 @@
 A new doomsday survival style strategy game in prototyping stage
 
 # TODO List
-* finish up log in function
-* after log in, main(game main) page
+* Back end
+    * develop super user
+    * superuser should manage player
+    * adapt to real database
+    * create a database migration file for testing 
+    * create api for superuser
+        * add/delete item
+        
+        
 
-* start to work on the front end
-* jump to login in page after signing up
+
+
+* Front end
+    * superuser login page
+    * superuser management page
+        * add/delete item
+        * manage player
+        
+    

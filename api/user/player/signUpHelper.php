@@ -5,7 +5,7 @@ include "playerDataInitializer.php";
 function checkDup($username, $con){
 
 //check duplicate
-    $q = "SELECT * FROM `user` WHERE username=$username";
+    $q = "SELECT * FROM `user` WHERE account_id=$username";
     $result = $con->query($q);
     if ($result->num_rows > 0) {
         return true;
@@ -14,9 +14,10 @@ function checkDup($username, $con){
     }
 }
 
-function register($username, $passwordH, $con)
+function register($username, $passwordH,$email, $con)
 {
-    $q = "insert into user(id,username,password) values (null,'$username','$passwordH')";//insert value into database
+    $q = "INSERT INTO `user` (`user_id`, `account_id`, `password`, `email`) 
+    VALUES (NULL, '$username', '$passwordH', '$email')";
     $con->query($q);
 
 

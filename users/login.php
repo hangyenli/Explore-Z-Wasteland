@@ -6,8 +6,10 @@ if (!isset($_POST["submit"])) {
     exit("Error");
 }//valid submit or not
 
-include("connect.php");
+include ("../api/serverConnection/connectDB.php");
 include ("../api/view/alertAndPageJump.php");
+
+$con=connectDB("127.0.0.1","root","","test");
 
 $name = $_POST['name'];//get username
 $passowrdH = md5($_POST['password']);//get password

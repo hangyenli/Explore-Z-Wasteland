@@ -5,9 +5,13 @@ if (!isset($_POST['submit'])) {
     exit("Error");
 }//valid submit or not
 
-include("connect.php");
+
+
 include("../api/user/player/signUpHelper.php");
 include ("../api/view/alertAndPageJump.php");
+include ("../api/serverConnection/connectDB.php");
+
+$con=connectDB("127.0.0.1","root","","test");
 
 $name = $_POST['name'];//get user name
 
